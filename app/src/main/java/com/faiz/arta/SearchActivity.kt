@@ -2,7 +2,6 @@ package com.faiz.arta
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -89,21 +88,21 @@ class SearchActivity : AppCompatActivity(), RuanganAdapter.OnItemClickListener {
             url,
             null,
             Response.Listener { response ->
-                Log.d("respon",""+response)
+                Log.wtf("respon",""+response)
                 try {
-                    // Loop through the array elements
                     for (i in 0 until response.length()) {
-                        // Get current json object
                         val dataPOI = response.getJSONObject(i)
                         Log.d("dataPOI",""+dataPOI)
 
                         val deskripsi = dataPOI.getString("description")
+
+                        val daftar_ruangan = dataPOI.getJSONArray("daftar ruangan")
+
+                        Log.e("isi", daftar_ruangan.toString())
+
                         val nama_gedung = dataPOI.getString("name")
 
-                        Log.d("deskripsi",""+deskripsi)
-                        Log.d("nama gedung",""+nama_gedung)
-
-                        mRuangan?.add(Ruangan(nama_gedung, deskripsi))
+                        mRuangan?.add(Ruangan(nama_gedung, deskripsi, daftar_ruangan.toString()))
                     }
 
                     /*ruanganAdapter = mRuangan?.let { RuanganAdapter(this, it) }*/
@@ -115,11 +114,11 @@ class SearchActivity : AppCompatActivity(), RuanganAdapter.OnItemClickListener {
                 }
             },
             Response.ErrorListener {error-> // Do something when error occurred
-                Toast.makeText(this, ""+error.toString(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, ""+error.toString(), Toast.LENGTH_SHORT).show()
+                Log.d("ini error",""+error)
             }
         )
 
-// Add the request to the RequestQueue.
         req = Volley.newRequestQueue(this)
         req?.add(jsonArrayRequest)
     }

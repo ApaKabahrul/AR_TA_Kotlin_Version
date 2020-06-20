@@ -41,9 +41,12 @@ internal class RuanganAdapter(
     ) {
         val currentItem: Ruangan = mRuangan[position]
         val gedung: String = currentItem.nama_gedung
-        val ruang: String = currentItem.daftar_ruang
+        val deskripsi: String = currentItem.deskripsi
+        val ruang: String = currentItem.daftar_ruangan
+
         holder.mTextViewGedung.text = gedung
-        holder.mTextViewRuang.text = ruang
+        holder.mTextViewDeskripsi.text = deskripsi
+        holder.mTextViewRuangan.text = ruang
     }
 
     override fun getItemCount(): Int {
@@ -58,11 +61,14 @@ internal class RuanganAdapter(
 
     inner class RuanganViewHolder(itemView: View) : ViewHolder(itemView) {
         var mTextViewGedung: TextView
-        var mTextViewRuang: TextView
+        var mTextViewDeskripsi: TextView
+        var mTextViewRuangan: TextView
 
         init {
             mTextViewGedung = itemView.findViewById(R.id.nama_gedung)
-            mTextViewRuang = itemView.findViewById(R.id.daftar_ruangan)
+            mTextViewDeskripsi = itemView.findViewById(R.id.deskripsi)
+            mTextViewRuangan = itemView.findViewById(R.id.daftar_ruangan)
+
             itemView.setOnClickListener {
                 if (mListener != null) {
                     val position = adapterPosition
