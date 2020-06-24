@@ -16,7 +16,7 @@
         app:queryBackground="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_gedung"
         android:layout_margin="10dp"
         android:layout_below="@+id/search"
         android:layout_width="match_parent"

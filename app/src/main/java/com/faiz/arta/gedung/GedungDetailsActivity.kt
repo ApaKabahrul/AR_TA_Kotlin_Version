@@ -1,4 +1,4 @@
-package com.faiz.arta.search
+package com.faiz.arta.gedung
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

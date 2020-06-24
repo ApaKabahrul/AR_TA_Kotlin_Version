@@ -31,7 +31,7 @@
                 android:paddingTop="5dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:text="Nama Gedung"
+                android:text="@string/nama_gedung"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             <TextView
@@ -42,19 +42,15 @@
                 android:paddingBottom="5dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:text="Deskripsi"
+                android:text="@string/deskripsi"
                 />
 
-            <TextView
-                android:id="@+id/daftar_ruangan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="Daftar Ruangan"
-                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_ruangan"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </LinearLayout>
