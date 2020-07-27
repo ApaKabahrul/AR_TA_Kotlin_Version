@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/borderless_button"
         />
 
     <LinearLayout
@@ -17,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/borderless_button">
+        android:background="@drawable/custom">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,27 +27,43 @@
                 android:id="@+id/nama_gedung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingStart="5dp"
+                android:fontFamily="@font/open_sans_extrabold"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="5dp"
                 android:text="@string/nama_gedung"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/deskripsi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:fontFamily="@font/open_sans_light"
                 android:paddingStart="10dp"
+                android:paddingTop="5dp"
                 android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/deskripsi"
-                />
+                android:textColor="@android:color/black"
+                android:typeface="sans" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Daftar Ruangan:"
+                android:textColor="@android:color/black"
+                android:typeface="sans" />
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_ruangan"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

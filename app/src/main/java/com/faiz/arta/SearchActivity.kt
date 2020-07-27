@@ -50,36 +50,20 @@ class SearchActivity : AppCompatActivity(){
         })
 
         //addData()
+
+        progressBar?.visibility = View.VISIBLE
         getInfo()
 
         recycler_view_gedung.layoutManager = LinearLayoutManager(this)
         recycler_view_gedung.adapter = adapter
     }
 
-    private fun addData() {
-        val subArrayList1 = ArrayList<DataRuangan>()
-        val sub1 = DataRuangan("Sub Heading 1")
-        val sub2 = DataRuangan("Sub Heading 2")
-        subArrayList1.add(sub1)
-        subArrayList1.add(sub2)
-        val main1 = DataGedung("Main Heading 1","", subArrayList1)
-        mDataGedung.add(main1)
-
-        val subArrayList2 = ArrayList<DataRuangan>()
-        val sub3 = DataRuangan("Sub Heading 3")
-        subArrayList2.add(sub3)
-        val main2 = DataGedung("Main Heading 2","", subArrayList2)
-        mDataGedung.add(main2)
-    }
-
     private fun filter(mDataGedung: ArrayList<DataGedung>, query: String): ArrayList<DataGedung> {
         val filterModeList: ArrayList<DataGedung> = ArrayList()
         for (row in mDataGedung){
-            val text = row.nama_gedung?.toLowerCase()
-            if (text != null) {
-                if(text.contains(query.toLowerCase())){
-                    filterModeList.add(row)
-                }
+            val text = row.daftar_ruangan.toString().replace("\\s+","").toLowerCase()
+            if(text.contains(query.replace("\\s+","").toLowerCase())){
+                filterModeList.add(row)
             }
         }
         return filterModeList
@@ -114,28 +98,20 @@ class SearchActivity : AppCompatActivity(){
 
                         val nama_gedung = dataPOI.getString("name")
 
-                        /*val sub1 = DataRuangan("Sub Heading 1")
-                        val sub2 = DataRuangan("Sub Heading 2")
-                        mDataRuangan.add(sub1)
-                        mDataRuangan.add(sub2)*/
-
-                        val main1 = DataGedung(nama_gedung,deskripsi, mDataRuangan)
+                        val main1 = DataGedung("Gedung "+nama_gedung,deskripsi, mDataRuangan)
                         mDataGedung.add(main1)
 
-                        //mDataGedung?.add(DataGedung(nama_gedung, deskripsi, daftar_ruangan.toString()))
                     }
 
-                    //*ruanganAdapter = mRuangan?.let { RuanganAdapter(this, it) }*//*
-                    /*mRecyclerView?.adapter = gedungAdapter
-                    gedungAdapter?.setOnItemClickListener(this)*/
+                    progressBar?.visibility = View.GONE
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
             },
             Response.ErrorListener {error-> // Do something when error occurred
-                //Toast.makeText(this, ""+error.toString(), Toast.LENGTH_SHORT).show()
                 Log.d("ini error",""+error)
+                progressBar?.visibility = View.GONE
             }
         )
 
